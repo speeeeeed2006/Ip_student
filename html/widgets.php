@@ -4,7 +4,7 @@
 	<div id="promotions" class="widget">
 		<h2>Promotions</h2>
 		<div id="promo">
-			<img src="" alt="">
+			<img src="http://lorempixel.com/210/140/nature/5/" alt="">
 			<div id="pourcentage"><span> -20%</span> </div>
 			<span class="marque">Marque</span>
 			<span class="nom_produit">Nom produit</span>

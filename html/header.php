@@ -12,7 +12,7 @@
 		<header>
 			<div id="top">
 				<div id="logo">
-					<img src="" alt="Logo société">
+					<img src="" alt="Logo société" />
 				</div><!--
 				--><div id="recherche">
 					<form>
