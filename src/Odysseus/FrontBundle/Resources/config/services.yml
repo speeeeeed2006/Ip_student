@@ -1,0 +1,7 @@
+parameters:
+#    odysseus_front.example.class: Odysseus\FrontBundle\Example
+
+services:
+#    odysseus_front.example:
+#        class: %odysseus_front.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
