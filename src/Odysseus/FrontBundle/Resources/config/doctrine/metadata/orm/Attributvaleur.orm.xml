@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Attributvaleur" table="attributvaleur">
+    <indexes>
+      <index name="fk_AttributValeur_AttributProduit1_idx" columns="AttributProduit_idAttributProduit"/>
+    </indexes>
+    <id name="idattributvaleur" type="integer" column="idAttributValeur">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="integer" column="nom" nullable="true"/>
+    <field name="attibutproduitid" type="integer" column="AttibutProduitId" nullable="false"/>
+    <many-to-one field="attributproduitattributproduit" target-entity="Attributproduit">
+      <join-columns>
+        <join-column name="AttributProduit_idAttributProduit" referenced-column-name="idAttributProduit"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

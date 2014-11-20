@@ -1,0 +1,108 @@
+<?php
+
+namespace Odysseus\BackBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Produit
+ *
+ * @ORM\Table(name="produit", indexes={@ORM\Index(name="fk_Produit_SousCategorie1_idx", columns={"sousCategorieId"}), @ORM\Index(name="fk_Produit_Etat1_idx", columns={"etatId"})})
+ * @ORM\Entity
+ */
+class Produit
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idProduit", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idproduit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reference", type="string", length=40, nullable=false)
+     */
+    private $reference;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nom", type="integer", nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=45, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="stock", type="integer", nullable=false)
+     */
+    private $stock;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="categorieId", type="integer", nullable=false)
+     */
+    private $categorieid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Produitcol", type="string", length=45, nullable=false)
+     */
+    private $produitcol;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=45, nullable=false)
+     */
+    private $image;
+
+    /**
+     * @var \Souscategorie
+     *
+     * @ORM\ManyToOne(targetEntity="Souscategorie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="sousCategorieId", referencedColumnName="idSousCategorie")
+     * })
+     */
+    private $souscategorieid;
+
+    /**
+     * @var \Etat
+     *
+     * @ORM\ManyToOne(targetEntity="Etat")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="etatId", referencedColumnName="idEtat")
+     * })
+     */
+    private $etatid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Commande", mappedBy="produitproduit")
+     */
+    private $commandecommande;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->commandecommande = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

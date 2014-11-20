@@ -1,0 +1,42 @@
+<?php
+
+namespace Odysseus\FrontBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Souscategorie
+ *
+ * @ORM\Table(name="souscategorie", indexes={@ORM\Index(name="fk_SousCategorie_Categorie1_idx", columns={"categorieId"})})
+ * @ORM\Entity
+ */
+class Souscategorie
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idSousCategorie", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsouscategorie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=45, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var \Categorie
+     *
+     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="categorieId", referencedColumnName="idCategorie")
+     * })
+     */
+    private $categorieid;
+
+
+}

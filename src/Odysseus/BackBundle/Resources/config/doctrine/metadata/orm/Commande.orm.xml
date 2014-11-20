@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Commande" table="commande">
+    <indexes>
+      <index name="fk_Commande_modePaiement1_idx" columns="modePaiement"/>
+      <index name="fk_Commande_etat1_idx" columns="etatId"/>
+    </indexes>
+    <id name="idcommande" type="integer" column="idCommande">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="clientid" type="integer" column="clientId" nullable="false"/>
+    <field name="clientip" type="string" column="clientIp" length="45" nullable="false"/>
+    <field name="datecommande" type="datetime" column="dateCommande" nullable="false"/>
+    <field name="datepaiement" type="datetime" column="datePaiement" nullable="false"/>
+    <field name="montant" type="integer" column="montant" nullable="false"/>
+    <many-to-one field="modepaiement" target-entity="Modepaiement">
+      <join-columns>
+        <join-column name="modePaiement" referenced-column-name="idModePaiement"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="etatid" target-entity="Etat">
+      <join-columns>
+        <join-column name="etatId" referenced-column-name="idEtat"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="produitproduit" target-entity="Produit" inversed-by="commandecommande">
+      <join-table name="commande_has_produit">
+        <join-columns>
+          <join-column name="Commande_idCommande" referenced-column-name="idCommande"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="Produit_idProduit" referenced-column-name="idProduit"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

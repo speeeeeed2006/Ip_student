@@ -1,0 +1,124 @@
+<?php
+
+namespace Odysseus\BackBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Client
+ *
+ * @ORM\Table(name="client", indexes={@ORM\Index(name="fk_Client_Adresse1_idx", columns={"Adresse_idAdresse"}), @ORM\Index(name="fk_Client_Etat1_idx", columns={"etatId"})})
+ * @ORM\Entity
+ */
+class Client
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idClient", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $idclient;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="civilite", type="string", length=45, nullable=false)
+     */
+    private $civilite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=45, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=45, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="newsletter", type="boolean", nullable=false)
+     */
+    private $newsletter;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="premium", type="boolean", nullable=false)
+     */
+    private $premium;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=45, nullable=true)
+     */
+    private $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=70, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mdp", type="string", length=45, nullable=false)
+     */
+    private $mdp;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDeNaissance", type="datetime", nullable=false)
+     */
+    private $datedenaissance;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDeCreation", type="datetime", nullable=false)
+     */
+    private $datedecreation;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDeModification", type="datetime", nullable=true)
+     */
+    private $datedemodification;
+
+    /**
+     * @var \Adresse
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Adresse")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Adresse_idAdresse", referencedColumnName="idAdresse")
+     * })
+     */
+    private $adresseadresse;
+
+    /**
+     * @var \Etat
+     *
+     * @ORM\ManyToOne(targetEntity="Etat")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="etatId", referencedColumnName="idEtat")
+     * })
+     */
+    private $etatid;
+
+
+}

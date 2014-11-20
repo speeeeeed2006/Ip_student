@@ -1,0 +1,91 @@
+<?php
+
+namespace Odysseus\BackBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Adresse
+ *
+ * @ORM\Table(name="adresse", indexes={@ORM\Index(name="fk_Adresse_Etat1_idx", columns={"etatId"})})
+ * @ORM\Entity
+ */
+class Adresse
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idAdresse", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idadresse;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="type", type="boolean", nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
+     */
+    private $adresse;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cp", type="integer", nullable=false)
+     */
+    private $cp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=60, nullable=false)
+     */
+    private $ville;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pays", type="string", length=45, nullable=false)
+     */
+    private $pays;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idClient", type="integer", nullable=false)
+     */
+    private $idclient;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="montant", type="integer", nullable=false)
+     */
+    private $montant;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="modePaiement", type="boolean", nullable=false)
+     */
+    private $modepaiement;
+
+    /**
+     * @var \Etat
+     *
+     * @ORM\ManyToOne(targetEntity="Etat")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="etatId", referencedColumnName="idEtat")
+     * })
+     */
+    private $etatid;
+
+
+}

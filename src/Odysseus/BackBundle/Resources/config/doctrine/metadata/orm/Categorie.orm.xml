@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Categorie" table="categorie">
+    <id name="idcategorie" type="integer" column="idCategorie">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="45" nullable="false"/>
+    <many-to-many field="attributproduitattributproduit" target-entity="Attributproduit" inversed-by="categoriecategory">
+      <join-table name="categorie_has_attributproduit">
+        <join-columns>
+          <join-column name="Categorie_idCategory" referenced-column-name="idCategorie"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="AttributProduit_idAttributProduit" referenced-column-name="idAttributProduit"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>
