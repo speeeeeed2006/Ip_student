@@ -1,3 +1,0 @@
-odysseus_front_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: OdysseusFrontBundle:Default:index }
